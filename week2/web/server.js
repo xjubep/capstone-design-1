@@ -16,7 +16,7 @@ app.get('/get', function (req, res) {
 
     r.email = "xjubep@gmail.com";
     r.stuno = "20141496";
-    r.time = date.format('YYYY-MM-DD hh:mm:ss');
+    r.time = date.format('YYYY-MM-DD HH:mm:ss');
     r.ip = req.ip.replace(/^.*:/, '');
     console.log(r);
     res.send(JSON.stringify(r));
@@ -28,7 +28,7 @@ app.post('/', function (req, res) {
 
     r.email = "xjubep@gmail.com";
     r.stuno = "20141496";
-    r.time = date.format('YYYY-MM-DD hh:mm:ss');
+    r.time = date.format('YYYY-MM-DD HH:mm:ss');
     r.ip = req.ip.replace(/^.*:/, '');
     res.send(JSON.stringify(r));
 });
