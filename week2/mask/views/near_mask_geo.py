@@ -3,7 +3,6 @@ import json
 import folium
 from folium import plugins
 from apscheduler.schedulers.blocking import BlockingScheduler
-import geocoder
 
 col = {
     'plenty': 'green',
