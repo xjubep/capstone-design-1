@@ -1,4 +1,7 @@
 /.vscode
 *.out
 node_modules
-*.html
+week2/mask/views/*.html
+week2/mask/img
+week2/mask/style.css
+week2/mask/colors.js

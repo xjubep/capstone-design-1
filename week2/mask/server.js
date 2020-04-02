@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/get', function (req, res) {
+app.get('/', function (req, res) {
     var r = req.query;
     var date = moment();
 
