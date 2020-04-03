@@ -15,7 +15,7 @@ connection.connect();
 app.get('/data', function(req, res) {
     console.log('params = ' + req.query);
 
-    var qstr = 'select * from sensor ';
+    var qstr = 'select * from sensors ';
     connection.query(qstr, function(err, rows, cols) {
         if (err) {
             throw err;

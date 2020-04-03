@@ -24,7 +24,7 @@ for url in lines:
                 r = requests.get(url+parm, timeout=5)
             elif method == "post": 
                 print("  post() -> ", end=" ")
-                r = requests.post(url, data=given, timeout=5)
+                r = requests.post(url, json=given, timeout=5)
     
             if r.status_code == 404: 
                 log["404"]["%s-%s"%(url,method)] = " not found"
