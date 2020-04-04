@@ -28,11 +28,12 @@ app.get('/graph', function(req, res) {
             var comma = "";
             for (var i = 0; i < rows.length; i++) {
                 r = rows[i];
-                data += comma + "[" + r.time + ", " + r.temp + "]";
+                d = Date.parse(r.time) - 9 * 60 * 60 * 1000;
+                data += comma + "[new Date(" + d + ")," + r.temp + "]";
                 comma = ",";
             }
 
-            var header = "data.addColumn('date', 'Date/Time');"
+            var header = "data.addColumn('datetime', 'Date/Time');"
             header += "data.addColumn('number', 'Temp');"
             html = html.replace("<%HEADER%>", header);
             html = html.replace("<%DATA%>", data);
