@@ -36,9 +36,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   send_data();
-  seq_num++;
-  if (seq_num == 1000)
-    seq_num = 0;
 }
 
 double get_temp(void) {
