@@ -42,8 +42,38 @@ app.get('/input', function (req, res) {
 
 app.get('/dump', function (req, res) {
     var r = req.query;
-    console.log(r);
-    res.send(JSON.stringify(r));
+    var qstr = 'select * from temps ';
+
+    if (Object.keys(r.device_id).length != 0)
+        qstr += 'where device=' + r.device_id;
+    console.log(qstr);
+
+
+    connection.query(qstr, function(err, rows, cols) {
+        if (err) {
+            throw err;
+            res.send('query error: ' + qstr);
+            return;
+        }
+
+        console.log('Got ' + rows.length + ' records');
+        //html = "{";
+        //for (var i = 0; i < rows.length - 1; i++)
+        //    html += JSON.stringify(rows[i]) + ", ";
+        //html += JSON.stringify(rows[rows.length-1]) + "}";
+        //res.send(html);
+	var jsonList = new Array();
+	for (var i = 0; i < rows.length; i++) {
+	    	var data = new Object();
+		data.temp = rows[i]['temp'];
+		data.sequence_number = rows[i]['seq'];
+		data.device_id = rows[i]['device'];
+		data.time = rows[i]['time'];
+		jsonList.push(data);
+	}
+	    var jsonData = JSON.stringify(jsonList);
+	    res.send(jsonData);
+    });
 });
 
 var server = app.listen(port, function() {
