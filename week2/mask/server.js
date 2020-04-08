@@ -23,6 +23,13 @@ app.get('/', function (req, res) {
     res.send(JSON.stringify(r));
 });
 
+app.get('/iot', function (req, res) {
+    var r = req.query;
+
+    console.log(r);
+    res.send(JSON.stringify(r));
+});
+
 app.post('/', function (req, res) {
     var r = req.body;
     var date = moment();
