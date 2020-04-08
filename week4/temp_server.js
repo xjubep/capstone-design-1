@@ -46,8 +46,6 @@ app.get('/dump', function (req, res) {
 
     if (Object.keys(r.device_id).length != 0)
         qstr += 'where device=' + r.device_id;
-    console.log(qstr);
-
 
     connection.query(qstr, function(err, rows, cols) {
         if (err) {
@@ -57,11 +55,7 @@ app.get('/dump', function (req, res) {
         }
 
         console.log('Got ' + rows.length + ' records');
-        //html = "{";
-        //for (var i = 0; i < rows.length - 1; i++)
-        //    html += JSON.stringify(rows[i]) + ", ";
-        //html += JSON.stringify(rows[rows.length-1]) + "}";
-        //res.send(html);
+       
 	var jsonList = new Array();
 	for (var i = 0; i < rows.length; i++) {
 	    	var data = new Object();
@@ -71,8 +65,10 @@ app.get('/dump', function (req, res) {
 		data.time = rows[i]['time'];
 		jsonList.push(data);
 	}
-	    var jsonData = JSON.stringify(jsonList);
-	    res.send(jsonData);
+	    //var jsonData = JSON.stringify(jsonList);
+	    res.set('Content-Type', 'application/json');
+	    res.json(jsonList);
+	    //res.send(jsonData);
     });
 });
 
